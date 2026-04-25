@@ -24,12 +24,12 @@ $blue_color: #329cf4;
 $light_blue_color: #64b5f6;
 $dark_blue_color: #1976d2;
 
-// $primary_color: #5fa9d3;
-// $primary_light_color: #a0cbe4;
-// $primary_lighter_color: #bfdced;
-// $primary_dark_color: #3f97ca;
-// $primary_darker_color: #3081b0;
-// $primary_darkest_color: #185375;
+$primary_color: #d02224;
+$primary_light_color: #dd2c2f;
+$primary_lighter_color: #e35053;
+$primary_dark_color: #bd1f21;
+$primary_darker_color: #ac1c1e;
+$primary_darkest_color: #9c191b;
 
 $app_primary_filter_shadow: drop-shadow(0 3px 6px rgba(#000, $alpha: 0.36));
 
@@ -39,18 +39,18 @@ $fs_heading_xl: clamp(4rem, 3vw + 4rem, 4.6rem);
 $fs_heading_lg: clamp(3.6rem, 2.6vw + 3.6rem, 4rem);
 $fs_heading_md: clamp(3.2rem, 1.86vw + 3.2rem, 3.6rem);
 $fs_heading_sm: clamp(3rem, 1.66vw + 3rem, 3.2rem);
-$fs_heading_2sm: clamp(2.66rem, 1.6vw + 2.8rem, 3rem);
+$fs_heading_ssm: clamp(2.66rem, 1.6vw + 2.8rem, 3rem);
 $fs_heading_3sm: clamp(2.6rem, 1.4vw + 2.6rem, 2.66rem);
 
-$fs_normal_xl: clamp(2.26rem, 1.2vw + 2.4rem, 2.46rem);
-$fs_normal_lg: clamp(1.96rem, 0.8vw + 2rem, 2.26rem);
-$fs_normal_md: clamp(1.66rem, 0.6vw + 1.8rem, 1.96rem);
+$fs_normal_xl: clamp(2.26rem, 1.2vw + 2.2rem, 2.46rem);
+$fs_normal_lg: clamp(1.76rem, 0.8vw + 1.8rem, 2.26rem);
+$fs_normal_md: clamp(1.66rem, 0.6vw + 1.66rem, 1.76rem);
 $fs_normal_sm: clamp(1.56rem, 0.46vw + 1.6rem, 1.66rem);
 $fs_normal_ssm: clamp(1.36rem, 0.3vw + 1.4rem, 1.56rem);
 $fs_normal_3sm: clamp(1rem, 0.3vw + 1.2rem, 1.36rem);
 $fs_normal_4sm: clamp(0.66rem, 0.2vw + 0.86rem, 1rem);
 
-$distance_xxxl: 48px;
+$distance_3xl: 48px;
 $distance_xxl: 40px;
 $distance_xl: 32px;
 $distance_lg: 24px;
@@ -58,3 +58,39 @@ $distance_md: 16px;
 $distance_sm: 8px;
 $distance_ssm: 6px;
 $distance_3sm: 4px;
+
+/* =============================================== */
+/* WEB SPECIFIC VARIABLES SET UP  */
+/* =============================================== */
+$transition_effect_md: all 360ms ease-in-out;
+$page_padding_left_right: clamp(40px, 5.6rem, 60px);
+
+$header_inp_width_normal_laptop: 26%;
+$header_inp_width_expanded_laptop: 30%;
+
+$intro_element_blur_bg_effect: blur(6px);
+
+/* =============================================== */
+/* THEME SET UP  */
+/* =============================================== */
+[data-theme='light'] {
+    --bg_color: #{$snow_white_color};
+    --bg_color_brighter: #{rgba($color: $light_gray_color, $alpha: 0.96)};
+    --post_comment_item_bg: #{rgba($color: #f3f3f3, $alpha: 0.66)};
+    --text_color: #{$black_text};
+    --hover_text_color: #{$white_text};
+    --text_hover_brightness: brightness(0.9);
+    --out_focus_gray: #{$gray_color};
+    --in_focus_gray: #{$dark_gray_color};
+}
+
+[data-theme='dark'] {
+    --bg_color: #{$ebony_black_color};
+    --bg_color_brighter: #{rgba($color: $gray_color, $alpha: 0.36)};
+    --post_comment_item_bg: #{rgba($color: #2f3135, $alpha: 0.56)};
+    --text_color: #{$white_text};
+    --hover_text_color: #{$black_text};
+    --text_hover_brightness: brightness(1.16);
+    --out_focus_gray: #{$dark_gray_color};
+    --in_focus_gray: #{$light_gray_color};
+}

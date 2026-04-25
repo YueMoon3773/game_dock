@@ -1,40 +1,71 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import { GithubIcon, Last30DaysIcon, PopularInYearIcon, BestOfYearIcon, AllTimeTopIcon } from './assets/svgIcons';
+import RawgImg from './assets/img/prj/RAWG.jpg';
+import PageLayout from './components/layout/PageLayout/PageLayout';
+import MainBtn from './components/base/MainBtn/MainBtn';
+
 import './App.scss';
 
 const App = () => {
-    const [items, setItems] = useState();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch('http://localhost:6600/', {
-                    mode: 'cors',
-                });
-                const data = await res.json();
-                console.log('data received: ', data);
-
-                setItems(data.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
-        fetchData();
-    }, []);
-
     return (
-        <>
-            <div>
-                <h1>Hi</h1>
-                {typeof items === 'undefined' ? (
-                    <p>Fetching data...</p>
-                ) : (
-                    items.map((item, index) => {
-                        return <p key={index}>{item.username}</p>;
-                    })
-                )}
+        <PageLayout pageType={'introPage'}>
+            <div className="introCard introCardLeft">
+                <div className="introCardTop">
+                    <h1>Gamio</h1>
+                    <p>
+                        This is not an actual commercial site. Games are not available for purchase. All prices are
+                        purely for display to simulate a real game store. Enjoy 😉
+                    </p>
+                </div>
+
+                <div className="introCardBottom">
+                    <Link
+                        to="https://github.com/YueMoon3773"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="introPageBtn"
+                    >
+                        <GithubIcon></GithubIcon>
+                        <span>YueMoon</span>
+                    </Link>
+
+                    <Link
+                        to="https://rawg.io/apidocs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="introPageBtn"
+                    >
+                        <img src={RawgImg} alt="RAWG image" />
+                        <span>RAWG API</span>
+                    </Link>
+                </div>
             </div>
-        </>
+
+            <div className="introCard introCardRight">
+                <h4>Quick navigation</h4>
+                <Link to="/" className="introPageBtn introQuickNavigationBtn">
+                    <Last30DaysIcon></Last30DaysIcon>
+                    <span>Last 30 days</span>
+                </Link>
+
+                <Link to="/" className="introPageBtn introQuickNavigationBtn">
+                    <PopularInYearIcon></PopularInYearIcon>
+                    <span>Popular in 2025</span>
+                </Link>
+
+                <Link to="/" className="introPageBtn introQuickNavigationBtn">
+                    <BestOfYearIcon></BestOfYearIcon>
+                    <span>Best of this year</span>
+                </Link>
+
+                <Link to="/" className="introPageBtn introQuickNavigationBtn">
+                    <AllTimeTopIcon></AllTimeTopIcon>
+                    <span>All time top</span>
+                </Link>
+            </div>
+        </PageLayout>
     );
 };
 

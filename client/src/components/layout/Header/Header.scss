@@ -1,0 +1,54 @@
+.headerLogo {
+    justify-self: start;
+    @include flexCenter;
+    font-size: $fs_heading_md;
+    gap: clamp(8px, 1rem, 12px);
+    transition: $transition_effect_md;
+
+    span {
+        font-size: inherit;
+        letter-spacing: -0.1rem;
+        font-family: 'Wallpoet';
+        color: var(--text_color);
+        text-shadow: 0px 0px 6px $black_text;
+        transition: $transition_effect_md;
+    }
+
+    &.introHeader {
+        color: $white_text;
+    }
+
+    .headerLogoImg {
+        width: 56px;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+.headerControllerWrapper {
+}
+
+.cartBtn {
+    background-color: transparent;
+    transition: $transition_effect_md;
+
+    svg {
+        height: $fs_heading_3sm;
+        transition: $transition_effect_md;
+    }
+
+    &.introPage {
+        svg {
+            color: $white_text;
+        }
+
+        &:hover {
+            svg {
+                color: $white_color;
+                transform: scale(1.1);
+            }
+        }
+    }
+}

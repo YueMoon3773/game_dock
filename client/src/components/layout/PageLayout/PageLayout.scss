@@ -1,0 +1,25 @@
+.introBgVideoWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -100;
+}
+
+.bgVideo {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.86) contrast(1.06);
+    transition: opacity 360ms ease;
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
+}

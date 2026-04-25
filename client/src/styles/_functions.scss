@@ -1,0 +1,25 @@
+@use './variables' as *;
+
+@keyframes headerInpExpand {
+    0% {
+        width: $header_inp_width_normal_laptop;
+    }
+    70% {
+        width: $header_inp_width_expanded_laptop * 1.06;
+    }
+    100% {
+        width: $header_inp_width_expanded_laptop;
+    }
+}
+
+@keyframes headerInpShrink {
+    0% {
+        width: $header_inp_width_expanded_laptop;
+    }
+    70% {
+        width: $header_inp_width_normal_laptop * 0.9;
+    }
+    100% {
+        width: $header_inp_width_normal_laptop;
+    }
+}

@@ -1,0 +1,113 @@
+.introCard {
+    max-width: 36%;
+    font-size: 1rem;
+    padding: clamp(16px, 2rem, 26px) clamp(30px, 3.6rem, 36px);
+    background-color: rgba($color: $snow_white_color, $alpha: 0.24);
+    border-radius: $distance_md;
+    backdrop-filter: $intro_element_blur_bg_effect;
+    box-shadow: 2px 6px 16px rgba($color: $black_text, $alpha: 0.36);
+}
+
+.introCardLeft {
+    .introCardTop {
+        @include flexColumn;
+        align-items: center;
+        gap: clamp(20px, 2.4rem, $distance_lg);
+
+        h1,
+        p {
+            color: $white_text;
+            text-shadow: 0 0 3px $black_text;
+            cursor: default;
+        }
+
+        h1 {
+            font-size: $fs_heading_xl;
+            margin: 0;
+        }
+
+        p {
+            font-size: $fs_normal_md;
+            font-weight: 500;
+            max-width: 75ch;
+            text-align: justify;
+            line-height: 1.6;
+        }
+    }
+
+    .introCardBottom {
+        @include flexCenter;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: clamp(20px, 2.4rem, $distance_lg);
+    }
+}
+
+.introCardRight {
+    @include flexColumn;
+    gap: clamp(12px, 1.6rem, $distance_md);
+
+    h4 {
+        font-size: $fs_normal_xl;
+        color: $white_text;
+        cursor: default;
+    }
+}
+
+.introPageBtn {
+    flex-basis: 1;
+    @include flexCenter;
+    padding: 0.36em 1.2em;
+    gap: clamp($distance_ssm, 0.6rem, 8px);
+    background-color: $snow_white_color;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition: $transition_effect_md;
+
+    span,
+    svg,
+    img {
+        transition: inherit;
+    }
+
+    svg,
+    img {
+        aspect-ratio: 1 / 1;
+    }
+
+    svg {
+        height: $fs_normal_xl;
+    }
+
+    img {
+        height: $fs_normal_md;
+        border-radius: 5px;
+    }
+
+    span {
+        font-size: $fs_normal_sm;
+        font-weight: 700;
+        color: $black_text;
+    }
+
+    &.introQuickNavigationBtn {
+        padding-top: 0.66em;
+        padding-bottom: 0.66em;
+    }
+
+    &:hover {
+        background-color: $primary_color;
+        transform: scale(1.06);
+        border-color: $snow_white_color;
+
+        span,
+        svg,
+        img {
+            scale: 1.03;
+        }
+
+        span {
+            color: $white_text;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.pageContentWrapper {
+    &.introPage {
+        @include flexCenter;
+        justify-content: space-between;
+        gap: 40px;
+    }
+}
