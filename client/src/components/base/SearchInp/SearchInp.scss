@@ -11,7 +11,11 @@ $searchClearInpValWidthToWrapper: 6%;
     &:has(.searchInp:active),
     &:has(.searchInp:focus),
     &:has(.searchInp:not(:placeholder-shown)) {
-        border-color: var(--in_focus_gray);
+        button.searchBtn::before {
+            height: 80%;
+        }
+
+        // border-color: var(--in_focus_gray);
     }
 
     &.headerSearchInp {
@@ -22,49 +26,95 @@ $searchClearInpValWidthToWrapper: 6%;
         border-color: rgba($color: $snow_white_color, $alpha: 0.56);
         backdrop-filter: $intro_element_blur_bg_effect;
 
+        // &.searchInpInBrightBg {
+        //     background-color: rgba($color: $dark_gray_color, $alpha: 0.36);
+        //     border-color: rgba($color: $gray_color, $alpha: 0.56);
+        // }
+
         &:has(.searchInp:active),
         &:has(.searchInp:focus),
         &:has(.searchInp:not(:placeholder-shown)) {
             animation: headerInpExpand 360ms cubic-bezier(0.43, 0.07, 0.35, 1.01);
             width: $header_inp_width_expanded_laptop;
-            background-color: rgba($color: $snow_white_color, $alpha: 0.36);
+            background-color: rgba($color: $light_gray_color, $alpha: 0.36);
             border-color: rgba($color: $snow_white_color, $alpha: 0.96);
+
+            // &.searchInpInBrightBg {
+            //     background-color: rgba($color: $dark_gray_color, $alpha: 0.66);
+            //     border-color: rgba($color: $gray_color, $alpha: 0.76);
+            // }
         }
 
         &:has(.searchInp:active),
         &:has(.searchInp:focus) {
             .searchInp::placeholder {
-                color: rgba($color: $gray_color, $alpha: 0.96) !important;
-                // color: $light_gray_color;
+                color: rgba($color: $gray_color, $alpha: 0.96);
             }
+
+            // .searchInp.searchInpInBrightBg::placeholder {
+            //     color: rgba($color: $light_gray_color, $alpha: 0.96) ;
+            // }
         }
 
         button {
             svg {
-                color: rgba($color: $snow_white_color, $alpha: 0.66) !important;
+                color: rgba($color: $snow_white_color, $alpha: 0.66);
             }
 
             &.searchBtn {
                 &::before {
-                    border-color: rgba($color: $snow_white_color, $alpha: 0.76) !important;
+                    border-color: rgba($color: $snow_white_color, $alpha: 0.76);
                 }
 
                 &:hover {
                     background-color: rgba($color: $snow_white_color, $alpha: 0.6);
 
                     svg {
-                        color: $black_text !important;
+                        color: $black_text;
                     }
                 }
             }
         }
     }
 
-    &:has(.searchInp:active),
-    &:has(.searchInp:focus),
-    &:has(.searchInp:not(:placeholder-shown)) {
-        button.searchBtn::before {
-            height: 80%;
+    &.searchInpInBrightBg {
+        background-color: rgba($color: $gray_color, $alpha: 0.26);
+        border-color: rgba($color: $dark_gray_color, $alpha: 0.36);
+
+        &:has(.searchInp:active),
+        &:has(.searchInp:focus),
+        &:has(.searchInp:not(:placeholder-shown)) {
+            background-color: rgba($color: $gray_color, $alpha: 0.46);
+            border-color: rgba($color: $dark_gray_color, $alpha: 0.76);
+        }
+
+        &:has(.searchInp:active),
+        &:has(.searchInp:focus) {
+            .searchInp::placeholder {
+                color: rgba($color: $dark_gray_color, $alpha: 0.96);
+            }
+        }
+
+        button {
+            svg {
+                color: rgba($color: $black_text, $alpha: 0.56);
+            }
+
+            &.searchBtn {
+                &::before {
+                    border-color: rgba($color: $dark_gray_color, $alpha: 0.36);
+                }
+
+                &:hover {
+                    background-color: rgba($color: $snow_white_color, $alpha: 0.6);
+                }
+            }
+
+            &:hover {
+                svg {
+                    color: $black_text;
+                }
+            }
         }
     }
 }
@@ -88,7 +138,7 @@ $searchClearInpValWidthToWrapper: 6%;
         color: $white_text;
 
         &::placeholder {
-            color: rgba($color: $light_gray_color, $alpha: 0.56) !important;
+            color: rgba($color: $light_gray_color, $alpha: 0.56);
             text-shadow: 0 0 1px $black_text;
         }
 
@@ -96,6 +146,21 @@ $searchClearInpValWidthToWrapper: 6%;
         &:focus {
             &::placeholder {
                 color: $gray_color;
+            }
+        }
+    }
+
+    &.searchInpInBrightBg {
+        color: var(--text_color);
+        &::placeholder {
+            color: rgba($color: $light_gray_color, $alpha: 0.56);
+            text-shadow: 0 0 1px $black_text;
+        }
+
+        &:active,
+        &:focus {
+            &::placeholder {
+                color: $black_text;
             }
         }
     }
@@ -149,7 +214,7 @@ $searchClearInpValWidthToWrapper: 6%;
 
     svg {
         height: $fs_normal_sm;
-        fill: currentColor !important;
+        fill: currentColor;
         color: var(--text_color);
     }
 }

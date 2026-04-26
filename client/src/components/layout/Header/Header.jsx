@@ -14,9 +14,10 @@ import './Header.scss';
 
 const headerSchema = z.object({
     pageType: z.string(),
+    isPageInBrightBg: z.boolean().default(false).optional(),
 });
 
-const Header = ({ pageType }) => {
+const Header = ({ pageType, isPageInBrightBg = false }) => {
     const [searchInpVal, setSearchInpVal] = useState('');
 
     const searchInpOnChangeHandle = (e) => {
@@ -32,6 +33,7 @@ const Header = ({ pageType }) => {
 
             <SearchInp
                 isHeaderSearchInp={true}
+                issearchInpInBrightBg={isPageInBrightBg}
                 searchInpPlaceHolder={'Search game, genre, ...'}
                 searchInpVal={searchInpVal}
                 searchInpOnChangeHandler={searchInpOnChangeHandle}

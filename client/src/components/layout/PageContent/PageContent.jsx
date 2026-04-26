@@ -21,20 +21,22 @@ const PageContent = ({ pageType, children }) => {
         case 'introPage':
             pageContentClassName = `${basePageStyles.pageContent} pageContentWrapper introPage`;
             break;
+        case 'errorPage':
+            pageContentClassName = `${basePageStyles.pageContent} pageContentWrapper errorPage`;
+            break;
         default:
             pageContentClassName = `${basePageStyles.pageContent} pageContentWrapper`;
     }
 
     return (
         <div className={pageContentClassName}>
-            {pageType === 'normalPage' ? (
+            {pageType === 'normalPage' && (
                 <>
                     <SideBar></SideBar>
                     {children}
                 </>
-            ) : (
-                <>{children}</>
             )}
+            {(pageType === 'introPage' || pageType === 'errorPage') && <>{children}</>}
         </div>
     );
 };

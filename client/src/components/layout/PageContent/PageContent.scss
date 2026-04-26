@@ -1,7 +1,14 @@
 .pageContentWrapper {
+    width: 100%;
+
+    &.errorPage,
     &.introPage {
         @include flexCenter;
         justify-content: space-between;
         gap: 40px;
+
+        &:has(.inErrorPage) {
+            justify-content: center;
+        }
     }
 }
