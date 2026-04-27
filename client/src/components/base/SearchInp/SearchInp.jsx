@@ -10,7 +10,7 @@ import './SearchInp.scss';
 const searchInpSchema = z
     .object({
         isHeaderSearchInp: z.boolean().optional(),
-        issearchInpInBrightBg: z.boolean().optional(),
+        isSearchInpInBrightBg: z.boolean().optional(),
         searchInpPlaceHolder: z.string(),
         searchInpVal: z.string(),
         searchInpOnChangeHandler: z.function(),
@@ -19,42 +19,43 @@ const searchInpSchema = z
     .refine(
         (data) => {
             const bothHeaderVarsProvided =
-                data.isHeaderSearchInp !== undefined && data.issearchInpInBrightBg !== undefined;
+                data.isHeaderSearchInp !== undefined && data.isSearchInpInBrightBg !== undefined;
             const neitherHeaderVarsProvided =
-                data.isHeaderSearchInp === undefined && data.issearchInpInBrightBg === undefined;
+                data.isHeaderSearchInp === undefined && data.isSearchInpInBrightBg === undefined;
             return bothHeaderVarsProvided || neitherHeaderVarsProvided;
         },
         {
-            message: 'isHeaderSearchInp and issearchInpInBrightBg must be provided together or not at all',
+            message: 'isHeaderSearchInp and isSearchInpInBrightBg must be provided together or not at all',
         },
     );
 
 const SearchInp = ({
     isHeaderSearchInp,
-    issearchInpInBrightBg,
+    isSearchInpInBrightBg,
     searchInpPlaceHolder,
     searchInpVal,
     searchInpOnChangeHandler,
     funcChangeSearchInpVal,
 }) => {
-    const [isSearchBtnHover, setIsSearchBtnHover] = useState(false);
+    const [isSearchInpInteracted, setIsSearchInpInteracted] = useState(false);
     const [isDeleteInpValBtnHover, setIsDeleteInpValBtnHover] = useState(false);
 
     return (
         <div
-            className={`searchInpWrapper ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${issearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
+            className={`searchInpWrapper ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${isSearchInpInBrightBg ? 'searchInpInBrightBg' : ''} ${isSearchInpInteracted ? 'interacted' : ''}`}
         >
             <input
                 type="text"
-                className={`searchInp ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${issearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
+                className={`searchInp ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${isSearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
                 placeholder={searchInpPlaceHolder}
                 value={searchInpVal}
+                onFocus={() => setIsSearchInpInteracted(true)}
                 onChange={(e) => {
                     searchInpOnChangeHandler(e);
                 }}
             />
             <button
-                className={`clearSearchInpValBtn ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${issearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
+                className={`clearSearchInpValBtn ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${isSearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
                 onMouseEnter={() => setIsDeleteInpValBtnHover(true)}
                 onMouseLeave={() => setIsDeleteInpValBtnHover(false)}
                 onClick={(e) => {
@@ -66,9 +67,7 @@ const SearchInp = ({
                 {isDeleteInpValBtnHover ? <CrossFullIcon></CrossFullIcon> : <CrossEmptyIcon></CrossEmptyIcon>}
             </button>
             <button
-                className={`searchBtn ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${issearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
-                onMouseEnter={() => setIsSearchBtnHover(true)}
-                onMouseLeave={() => setIsSearchBtnHover(false)}
+                className={`searchBtn ${isHeaderSearchInp ? 'headerSearchInp' : ''} ${isSearchInpInBrightBg ? 'searchInpInBrightBg' : ''}`}
                 onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();

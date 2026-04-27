@@ -21,10 +21,13 @@ $searchClearInpValWidthToWrapper: 6%;
     &.headerSearchInp {
         justify-self: center;
         width: $header_inp_width_normal_laptop;
-        animation: headerInpShrink 360ms cubic-bezier(0.43, 0.07, 0.35, 1.01);
         background-color: rgba($color: $light_gray_color, $alpha: 0.16);
         border-color: rgba($color: $snow_white_color, $alpha: 0.56);
         backdrop-filter: $intro_element_blur_bg_effect;
+
+        &.interacted {
+            animation: headerInpShrink 360ms cubic-bezier(0.43, 0.07, 0.35, 1.01);
+        }
 
         // &.searchInpInBrightBg {
         //     background-color: rgba($color: $dark_gray_color, $alpha: 0.36);
@@ -74,6 +77,10 @@ $searchClearInpValWidthToWrapper: 6%;
                     }
                 }
             }
+        }
+
+        &:hover {
+            filter: brightness(1.12);
         }
     }
 

@@ -1,3 +1,17 @@
+.header {
+    &.normalPageHeader {
+        background-color: var(--bg_color);
+        border-bottom: 1px solid var(--in_focus_gray);
+
+        &.hidden {
+            transform: translateY(-106%);
+        }
+    }
+    // &.hidden {
+    //     transform: translateY(-100%);
+    // }
+}
+
 .headerLogo {
     justify-self: start;
     @include flexCenter;
@@ -14,7 +28,8 @@
         transition: $transition_effect_md;
     }
 
-    &.introHeader {
+    &.introPageHeader,
+    &.errorPageHeader {
         color: $white_text;
     }
 
@@ -35,8 +50,15 @@
     transition: $transition_effect_md;
 
     svg {
+        color: var(--text_color);
         height: $fs_heading_3sm;
         transition: $transition_effect_md;
+    }
+
+    &:hover {
+        svg {
+            transform: scale(1.16);
+        }
     }
 
     &.introPage {
@@ -47,7 +69,6 @@
         &:hover {
             svg {
                 color: $white_color;
-                transform: scale(1.1);
             }
         }
     }

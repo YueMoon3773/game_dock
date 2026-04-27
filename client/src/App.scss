@@ -8,7 +8,6 @@
     box-shadow: 2px 6px 16px rgba($color: $black_text, $alpha: 0.36);
 
     &.inErrorPage {
-
         h1 {
             font-size: $fs_heading_sm;
             color: $white_text;
@@ -86,7 +85,15 @@
     }
 
     svg {
+        fill: none;
         height: $fs_normal_xl;
+        color: $black_text;
+    }
+
+    svg path,
+    svg line,
+    svg polyline {
+        fill: currentColor;
     }
 
     img {

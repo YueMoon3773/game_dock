@@ -6,7 +6,7 @@ $black_color: #000;
 $white_color: #fff;
 $black_text: #333;
 $white_text: #f5f5f5;
-$ebony_black_color: #222428;
+$ebony_black_color: #1c1d1e;
 $snow_white_color: #fffafa;
 $gray_color: #d6d6d6;
 $light_gray_color: #e8e8e8;
@@ -63,12 +63,16 @@ $distance_3sm: 4px;
 /* WEB SPECIFIC VARIABLES SET UP  */
 /* =============================================== */
 $transition_effect_md: all 360ms ease-in-out;
+$header_padding_top_bottom: clamp(20px, 2.4rem, 26px);
 $page_padding_left_right: clamp(40px, 5.6rem, 60px);
 
-$header_inp_width_normal_laptop: 26%;
-$header_inp_width_expanded_laptop: 30%;
+$header_inp_width_normal_laptop: 22%;
+$header_inp_width_expanded_laptop: 36%;
 
 $intro_element_blur_bg_effect: blur(6px);
+
+$side_bar_wrapper_size: clamp(42px, 4.26rem, 46px);
+// $side_bar_wrapper_size: clamp(36px, 4rem, 46px);
 
 /* =============================================== */
 /* THEME SET UP  */

@@ -34,6 +34,7 @@ const pageLayoutSchema = z
     );
 
 const PageLayout = ({ pageType, bgVideo, bgPosterImg, isBgVideoBright, children }) => {
+        
     const { theme } = useTheme();
     const [isBgVideoReady, setIsBgVideoReady] = useState(false);
 

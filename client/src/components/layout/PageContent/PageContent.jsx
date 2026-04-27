@@ -33,7 +33,7 @@ const PageContent = ({ pageType, children }) => {
             {pageType === 'normalPage' && (
                 <>
                     <SideBar></SideBar>
-                    {children}
+                    <div className="contentWrapper">{children}</div>
                 </>
             )}
             {(pageType === 'introPage' || pageType === 'errorPage') && <>{children}</>}

@@ -1,14 +1,26 @@
 .pageContentWrapper {
+    flex-grow: 1;
     width: 100%;
+    height: 100%;
 
     &.errorPage,
     &.introPage {
+        padding: 0 $page_padding_left_right;
         @include flexCenter;
         justify-content: space-between;
         gap: 40px;
 
         &:has(.inErrorPage) {
             justify-content: center;
+        }
+    }
+
+    &.normalPage {
+        @include displayGrid;
+        grid-template-columns: 3fr 9fr;
+
+        .sideBar {
+            grid-column: 1 / 2;
         }
     }
 }

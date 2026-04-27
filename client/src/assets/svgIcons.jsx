@@ -66,6 +66,58 @@ export const GithubIcon = ({ iconClassName = '' }) => {
     );
 };
 
+export const CrossEmptyIcon = ({ iconClassName = '' }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={`customSvgIcon ${iconClassName}`} viewBox="0 0 24 24">
+            <path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+        </svg>
+    );
+};
+
+export const CrossFullIcon = ({ iconClassName = '' }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={`customSvgIcon ${iconClassName}`} viewBox="0 0 24 24">
+            <title>close-circle</title>
+            <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
+        </svg>
+    );
+};
+
+/* SIDE BAR ICONS */
+export const YourFavGamesIcon = ({ iconClassName = '' }) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`customSvgIcon ${iconClassName}`}
+        >
+            <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+        </svg>
+    );
+};
+
+export const ShowAllButtonIcon = ({ iconClassName = '' }) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`customSvgIcon ${iconClassName}`}
+        >
+            <path d="m6 9 6 6 6-6" />
+        </svg>
+    );
+};
+
 export const Last30DaysIcon = ({ iconClassName = '' }) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" className={`customSvgIcon ${iconClassName}`} viewBox="0 0 24 24">
@@ -405,23 +457,6 @@ export const SportIcon = ({ iconClassName = '' }) => {
     return (
         <svg viewBox="-8 0 512 512" className={`customSvgIcon ${iconClassName}`} xmlns="http://www.w3.org/2000/svg">
             <path d="M481.5 60.3c-4.8-18.2-19.1-32.5-37.3-37.4C420.3 16.5 383 8.9 339.4 8L496 164.8c-.8-43.5-8.2-80.6-14.5-104.5zm-467 391.4c4.8 18.2 19.1 32.5 37.3 37.4 23.9 6.4 61.2 14 104.8 14.9L0 347.2c.8 43.5 8.2 80.6 14.5 104.5zM4.2 283.4L220.4 500c132.5-19.4 248.8-118.7 271.5-271.4L275.6 12C143.1 31.4 26.8 130.7 4.2 283.4zm317.3-123.6c3.1-3.1 8.2-3.1 11.3 0l11.3 11.3c3.1 3.1 3.1 8.2 0 11.3l-28.3 28.3 28.3 28.3c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0l-28.3-28.3-22.6 22.7 28.3 28.3c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0L248 278.6l-22.6 22.6 28.3 28.3c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0l-28.3-28.3-28.3 28.3c-3.1 3.1-8.2 3.1-11.3 0l-11.3-11.3c-3.1-3.1-3.1-8.2 0-11.3l28.3-28.3-28.3-28.2c-3.1-3.1-3.1-8.2 0-11.3l11.3-11.3c3.1-3.1 8.2-3.1 11.3 0l28.3 28.3 22.6-22.6-28.3-28.3c-3.1-3.1-3.1-8.2 0-11.3l11.3-11.3c3.1-3.1 8.2-3.1 11.3 0l28.3 28.3 22.6-22.6-28.3-28.3c-3.1-3.1-3.1-8.2 0-11.3l11.3-11.3c3.1-3.1 8.2-3.1 11.3 0l28.3 28.3 28.3-28.5z"></path>
-        </svg>
-    );
-};
-
-export const CrossEmptyIcon = ({ iconClassName = '' }) => {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" className={`customSvgIcon ${iconClassName}`} viewBox="0 0 24 24">
-            <path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
-        </svg>
-    );
-};
-
-export const CrossFullIcon = ({ iconClassName = '' }) => {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" className={`customSvgIcon ${iconClassName}`} viewBox="0 0 24 24">
-            <title>close-circle</title>
-            <path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" />
         </svg>
     );
 };
