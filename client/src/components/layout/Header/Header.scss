@@ -1,4 +1,6 @@
 .header {
+    transition: $transition_effect_md;
+
     &.normalPageHeader {
         background-color: var(--bg_color);
         border-bottom: 1px solid var(--in_focus_gray);
@@ -43,6 +45,8 @@
 }
 
 .headerControllerWrapper {
+    @include flexCenter;
+    gap: clamp(10px, 1.2rem, 14px);
 }
 
 .cartBtn {
@@ -69,6 +73,49 @@
         &:hover {
             svg {
                 color: $white_color;
+            }
+        }
+    }
+}
+
+.themeBtn {
+    background-color: transparent;
+
+    svg {
+        height: $fs_heading_3sm;
+        color: var(--text_color);
+
+        .sunRays,
+        .moonBody,
+        .starOfMoon {
+            transition: $transition_effect_md;
+        }
+
+        .sunRays {
+            transform-origin: 12px 12px;
+        }
+
+        .moonBody {
+            transform-origin: 11px 13px;
+        }
+
+        .starOfMoon {
+            transform-origin: 20px 5px;
+        }
+    }
+
+    &:hover {
+        svg {
+            .sunRays {
+                animation: sunRaysSpinAndPulse 3s linear infinite;
+            }
+
+            .moonBody {
+                animation: moonRocking 3s linear infinite;
+            }
+
+            .starOfMoon {
+                animation: starOfMoonSpinAndPulse 2s linear infinite;
             }
         }
     }

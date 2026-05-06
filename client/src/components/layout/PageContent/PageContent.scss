@@ -17,10 +17,18 @@
 
     &.normalPage {
         @include displayGrid;
-        grid-template-columns: 3fr 9fr;
+        grid-template-columns: 2.5fr 9.5fr;
+        padding-bottom: $page_content_padding_content_top_bottom;
 
         .sideBar {
             grid-column: 1 / 2;
+        }
+
+        .contentWrapper {
+            // padding-right: $page_padding_left_right;
+            // padding-right: $page_padding_left_right;
+            // padding-top: $page_content_padding_content_top_bottom;
+            padding: $page_content_padding_content_top_bottom $page_padding_left_right;
         }
     }
 }

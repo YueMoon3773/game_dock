@@ -1,0 +1,18 @@
+.masonryGrid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: calc($game_card_masonry_gap * -1); /* gutter size offset */
+    width: auto;
+
+    // position: relative;
+}
+.masonryGridColumn {
+    padding-left: $game_card_masonry_gap; /* gutter size */
+    background-clip: padding-box;
+    // position: relative;
+}
+
+.masonryGridColumn > div {
+    margin-bottom: $game_card_masonry_gap;
+}

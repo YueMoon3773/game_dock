@@ -11,6 +11,7 @@
 
 .pageBgHasColor {
     background-color: var(--bg_color);
+    transition: $transition_effect_md;
 }
 
 .pageHeader {

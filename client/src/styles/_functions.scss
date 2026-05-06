@@ -23,3 +23,42 @@
         width: $header_inp_width_normal_laptop;
     }
 }
+
+@keyframes sunRaysSpinAndPulse {
+    0% {
+        transform: rotate(0deg) scale(1.06);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.86);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.06);
+    }
+}
+
+@keyframes starOfMoonSpinAndPulse {
+    0% {
+        transform: rotate(0deg) scale(1.36);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.86);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.36);
+    }
+}
+
+@keyframes moonRocking {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-16deg);
+    }
+    75% {
+        transform: rotate(16deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

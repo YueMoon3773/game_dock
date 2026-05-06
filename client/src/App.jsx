@@ -5,11 +5,6 @@ import { useVideoBgChange } from './hooks/useVideoBgChange';
 
 import { GithubIcon, Last30DaysIcon, PopularInYearIcon, BestOfYearIcon, AllTimeTopIcon } from './assets/svgIcons';
 import RawgImg from './assets/img/prj/RAWG.jpg';
-import IntroBgVideo1 from './assets/videos/hollowKnightBg1.webm';
-import IntroBgVideo2 from './assets/videos/hollowKnightBg2.webm';
-import IntroBgVideo3 from './assets/videos/hollowKnightBg3.webm';
-import IntroBgVideo4 from './assets/videos/hollowKnightBg4.webm';
-import IntroBgImg from './assets/img/poster/hollowKnightBgPoster.jpg';
 
 import PageLayout from './components/layout/PageLayout/PageLayout';
 import MainBtn from './components/base/MainBtn/MainBtn';

@@ -169,7 +169,7 @@ const SideBar = () => {
                     <NavLink to="/" className={({ isActive }) => `sideBarLink ${isActive ? 'active' : ''}`}>
                         <div className="sideBarIconWrapper">
                             {/* <ActionIcon iconClassName={'sideBarIcon'}></ActionIcon> */}
-                            <ActionIcon></ActionIcon>
+                            <ActionIcon iconClassName={'sideBarFilledIcon'}></ActionIcon>
                         </div>
                         <span>Action</span>
                     </NavLink>
@@ -229,7 +229,7 @@ const SideBar = () => {
                             setIsGenresShowAll((prev) => !prev);
                         }}
                     >
-                        <div className={`sideBarIconWrapper ${isPlatformsShowAll ? 'rotateIcon' : ''}`}>
+                        <div className={`sideBarIconWrapper ${isGenresShowAll ? 'rotateIcon' : ''}`}>
                             <ShowAllButtonIcon iconClassName={'sideBarShowHideIcon'}></ShowAllButtonIcon>
                             {/* <ShowAllButtonIcon></ShowAllButtonIcon> */}
                         </div>

@@ -1,358 +1,64 @@
+import Masonry from 'react-masonry-css';
+
+import { useFetchGetData } from '../../../hooks/useFetchData';
+
 import PageLayout from '../../layout/PageLayout/PageLayout';
+import GameCard from '../../base/GameCard/GameCard';
 
 import './ViewGames.scss';
 
+const baseGameApiUrl = import.meta.env.VITE_API_GAMES_URL;
+const gameApiUrlKey = import.meta.env.VITE_API_GAMES_URL_KEY;
+
+const breakpointColumnsObj = {
+    default: 3,
+    1200: 2,
+    740: 1,
+};
+
+import gamesDataTest from '../../../../data.json';
+
 const ViewGames = () => {
+    const gamesData = gamesDataTest.results;
+    console.log({ gamesData });
+
+    // const {
+    //     data: gamesData,
+    //     error: gamesError,
+    //     loading: gamesLoading,
+    //     refetch: gamesRefetch,
+    //     newFetchUrl: gameNewFetchUrl,
+    // } = useFetchGetData(`${baseGameApiUrl}/games?key=${gameApiUrlKey}`);
+
     return (
         <PageLayout pageType="normalPage">
-            <div className="text">
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-            </div>
-            <div className="text">
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-            </div>
-            <div className="text">
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-            </div>
-            <div className="text">
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-            </div>
-            <div className="text">
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-            </div>
-            <div className="text">
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-                <h1>
-                    Fuga corporis id et. Quae inventore necessitatibus magni. Nesciunt odio eius minus accusantium
-                    tempora natus aut. Qui necessitatibus accusamus sit eveniet est sunt eum ullam. Est qui id placeat
-                    assumenda iste molestiae. Sint laudantium qui tempore. A consectetur quo optio consequatur
-                    doloremque. Eum qui quod et non necessitatibus voluptatem occaecati qui voluptatem. Labore ut dolore
-                    et eaque aut sunt sapiente. Magni modi sit provident inventore facere doloribus. Mollitia tenetur
-                    magni et. Ut facilis qui non accusantium.
-                </h1>
-            </div>
+            <section className="filterControllerSection"></section>
+            <section className="gamesDisplaySection">
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="masonryGrid"
+                    columnClassName="masonryGridColumn"
+                >
+                    {gamesData.map((item, index) => {
+                        return (
+                            <GameCard
+                                key={item.id}
+                                // isGameCardLoading={''}
+                                gameCardId={item.id}
+                                gameCardSingleMediaDisplay={item.background_image}
+                                gameCardMediaLibrary={item.short_screenshots}
+                                gameCardPlatforms={item.platforms}
+                                gameCardName={item.name}
+                                gameCardReleaseDate={item.released}
+                                gameCardGenres={item.genres}
+                                gameCardRating={item.rating}
+                                gameCardStores={item.stores}
+                            ></GameCard>
+                        );
+                    })}
+                </Masonry>
+            </section>
+            <section className="paginationControllerSection"></section>
         </PageLayout>
     );
 };

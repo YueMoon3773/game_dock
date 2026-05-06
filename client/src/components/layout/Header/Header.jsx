@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, use } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
 
+import { useTheme } from '../../../hooks/useTheme';
 import ValidatedComponent from '../../../utils/validateComponentProps';
 
-import { CartIcon } from '../../../assets/svgIcons';
+import { CartIcon, SunIcon, MoonIcon } from '../../../assets/svgIcons';
 import LogoImg from '../../../assets/img/LogoImg.png';
 import SearchInp from '../../base/SearchInp/SearchInp';
 
@@ -21,10 +22,12 @@ const headerSchema = z.object({
 });
 
 const Header = ({ pageType, isPageInBrightBg = false }) => {
-    const [isHidden, setIsHidden] = useState(false);
+    const { theme, toggleTheme } = useTheme();
+    const [isHeaderHidden, setIsHeaderHidden] = useState(false);
     const lastScrollY = useRef(0);
 
     const [searchInpVal, setSearchInpVal] = useState('');
+    const [isThemeBtnHover, setIsThemeBtnHover] = useState(false);
 
     // Set up hide/unhide header
     useEffect(() => {
@@ -37,7 +40,7 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
 
             if (currentScrollY <= 0) {
                 // top of page => always show header
-                setIsHidden(false);
+                setIsHeaderHidden(false);
                 accumulatedScrollUp = 0;
                 accumulatedScrollDown = 0;
             } else if (distanceDiff > 0) {
@@ -46,7 +49,7 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
                 accumulatedScrollUp = 0; // reset opposite accumulator
 
                 if (accumulatedScrollDown >= HEADER_HIDE_THRESHOLD) {
-                    setIsHidden(true);
+                    setIsHeaderHidden(true);
                 }
             } else if (distanceDiff < 0) {
                 // scrolling up → accumulate
@@ -54,7 +57,7 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
                 accumulatedScrollDown = 0; // reset opposite accumulator
 
                 if (accumulatedScrollUp >= HEADER_SHOW_THRESHOLD) {
-                    setIsHidden(false);
+                    setIsHeaderHidden(false);
                 }
             }
 
@@ -71,7 +74,7 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
 
     return (
         <header
-            className={`${basePageStyles.pageHeader} header ${pageType === 'normalPage' ? 'normalPageHeader' : ''} ${isHidden ? 'hidden' : ''}`}
+            className={`${basePageStyles.pageHeader} header ${pageType === 'normalPage' ? 'normalPageHeader' : ''} ${isHeaderHidden ? 'hidden' : ''}`}
         >
             <Link
                 to="/"
@@ -91,6 +94,16 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
             ></SearchInp>
 
             <div className="headerControllerWrapper">
+                <button
+                    className="themeBtn"
+                    onClick={toggleTheme}
+                    onMouseEnter={() => setIsThemeBtnHover(true)}
+                    onMouseLeave={() => setIsThemeBtnHover(false)}
+                >
+                    {theme === 'light' && <MoonIcon moonIconHover={isThemeBtnHover}></MoonIcon>}
+                    {theme === 'dark' && <SunIcon sunIconHover={isThemeBtnHover}></SunIcon>}
+                </button>
+
                 <button className={`cartBtn ${pageType === 'introPage' ? 'introPage' : ''}`}>
                     <CartIcon></CartIcon>
                 </button>

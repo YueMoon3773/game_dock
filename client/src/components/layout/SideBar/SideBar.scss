@@ -2,12 +2,12 @@
     // position: sticky;
     overflow-y: auto;
     padding-left: $page_padding_left_right;
+    padding-top: $page_content_padding_content_top_bottom;
 
     @include flexColumn;
     align-items: stretch;
-    gap: clamp(24px, 2.6rem, 30px);
+    gap: clamp(36px, 3.8rem, 42px);
 }
-
 
 .sideBarSection {
     @include flexColumn;
@@ -18,7 +18,8 @@
 .sideBarSectionHeading {
     font-size: $fs_heading_sm;
     color: var(--text_color);
-    margin: 0.8em 0;
+    margin: 0;
+    margin-bottom: 0.6em;
     cursor: default;
 }
 
@@ -37,7 +38,7 @@
     .sideBarIconWrapper {
         @include flexCenter;
         aspect-ratio: 1 / 1;
-        min-width: $side_bar_wrapper_size;
+        min-width: $side_bar_icon_wrapper_size;
         background-color: color-mix(in srgb, var(--out_focus_gray) 36%, transparent);
 
         border-radius: calc($distance_sm * 1.06);
@@ -50,6 +51,10 @@
             font-weight: 500;
             color: var(--text_color);
             transition: $transition_effect_md;
+        }
+
+        .sideBarFilledIcon {
+            fill: currentColor;
         }
 
         .sideBarIcon path,
@@ -72,9 +77,10 @@
 
     &.active {
         .sideBarIconWrapper {
-            background-color: color-mix(in srgb, var(--in_focus_gray) 96%, transparent);
+            background-color: color-mix(in srgb, var(--in_focus_gray) 96%, transparent) !important;
+
             svg {
-                color: $primary_color;
+                color: $primary_color !important;
                 transform: scale(1.06);
             }
         }
@@ -89,6 +95,7 @@
     &:hover {
         .sideBarIconWrapper {
             background-color: color-mix(in srgb, var(--in_focus_gray) 80%, transparent);
+            box-shadow: 2px 2px 3px color-mix(in srgb, var(--out_focus_gray) 50%, transparent);
 
             svg {
                 color: $primary_light_color;
@@ -111,7 +118,7 @@
     .sideBarIconWrapper {
         @include flexCenter;
         aspect-ratio: 1 / 1;
-        min-width: $side_bar_wrapper_size;
+        min-width: $side_bar_icon_wrapper_size;
         background-color: color-mix(in srgb, var(--out_focus_gray) 16%, transparent);
 
         border-radius: calc($distance_sm * 1.06);
