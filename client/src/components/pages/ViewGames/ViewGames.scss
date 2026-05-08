@@ -11,8 +11,10 @@
     padding-left: $game_card_masonry_gap; /* gutter size */
     background-clip: padding-box;
     // position: relative;
+    // overflow: visible !important;
 }
 
 .masonryGridColumn > div {
     margin-bottom: $game_card_masonry_gap;
+    // overflow: visible !important;
 }

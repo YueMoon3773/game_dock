@@ -65,7 +65,7 @@ $distance_3sm: 4px;
 $transition_effect_md: all 360ms ease-in-out;
 $header_padding_top_bottom: clamp(16px, 2rem, 24px);
 $page_padding_left_right: clamp(40px, 5.6rem, 60px);
-$page_content_padding_content_top_bottom: clamp(28px, 3rem, 36px);
+$page_content_padding_content_top: clamp(28px, 3rem, 36px);
 
 $header_inp_width_normal_laptop: 22%;
 $header_inp_width_expanded_laptop: 36%;
@@ -78,6 +78,7 @@ $game_card_masonry_gap: 36px;
 $game_card_img_width: 280px;
 $game_card_img_height: 160px;
 $game_card_info_padding: 16px 16px 24px;
+$game_card_extra_info_padding_bottom: 28px;
 
 /* =============================================== */
 /* THEME SET UP  */
@@ -85,7 +86,7 @@ $game_card_info_padding: 16px 16px 24px;
 [data-theme='light'] {
     --bg_color: #{$snow_white_color};
     --bg_color_brighter: #{rgba($color: $light_gray_color, $alpha: 0.96)};
-    --game_card_comment_item_bg: #{rgba($color: #eeeeee, $alpha: 0.66)};
+    --game_card_bg: #dedbdb;
     --text_color: #{$black_text};
     --hover_text_color: #{$white_text};
     --text_hover_brightness: brightness(0.9);
@@ -96,7 +97,7 @@ $game_card_info_padding: 16px 16px 24px;
 [data-theme='dark'] {
     --bg_color: #{$ebony_black_color};
     --bg_color_brighter: #{rgba($color: $gray_color, $alpha: 0.36)};
-    --game_card_comment_item_bg: #{rgba($color: #3a3a3a, $alpha: 0.36)};
+    --game_card_bg: #2e2e2e;
     --text_color: #{$white_text};
     --hover_text_color: #{$black_text};
     --text_hover_brightness: brightness(1.16);

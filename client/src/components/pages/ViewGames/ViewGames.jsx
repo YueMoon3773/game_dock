@@ -20,7 +20,7 @@ import gamesDataTest from '../../../../data.json';
 
 const ViewGames = () => {
     const gamesData = gamesDataTest.results;
-    console.log({ gamesData });
+    // console.log({ gamesData });
 
     // const {
     //     data: gamesData,
@@ -52,6 +52,7 @@ const ViewGames = () => {
                                 gameCardReleaseDate={item.released}
                                 gameCardGenres={item.genres}
                                 gameCardRating={item.rating}
+                                gameCardRatingCount={item.ratings_count}
                                 gameCardStores={item.stores}
                             ></GameCard>
                         );

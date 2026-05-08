@@ -1,50 +1,73 @@
+$game_card_border_radius: 12px;
+$game_card_hover_scale: scale(1.036) translateY(6px);
+
+.gameCardWrapper {
+    z-index: 10;
+    transition: $transition_effect_md;
+
+    &.cardHovering {
+        position: relative;
+        z-index: 50;
+        transform: $game_card_hover_scale;
+
+        overflow: visible !important;
+    }
+}
+
 .gameCard {
-    border-radius: 12px;
+    border-radius: $game_card_border_radius;
     overflow: hidden;
 
     @include flexColumn;
     align-items: stretch;
 
-    transition: $transition_effect_md;
-
     &.cardHovering {
-        // position: absolute;
-        position: fixed;
-        z-index: 50;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
     }
 }
 
 .gameCardMedia {
     width: 100%;
     height: 100%;
+    // aspect-ratio: 280 / 158;
     // @include flexCenter;
+    // position: relative;
 }
 
 .cardMediaWrapper {
+    width: 100%;
+    height: 100%;
+
     &.mediaDisplayed {
         aspect-ratio: 280 / 158;
-        @include flexCenter;
+        // @include flexCenter;
     }
 
     img {
         width: 100%;
         height: 100%;
+        // aspect-ratio: 280 / 158;
         object-fit: cover;
         object-position: center;
     }
 }
 
 .cardMediaLibrary {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
 }
 
-.gameCardInfo {
+.gameCardInfo,
+.gameCardExtraInfo {
     padding: $game_card_info_padding;
     @include flexColumn;
     align-items: stretch;
     gap: clamp(6px, 0.8rem, 10px);
 
-    background-color: var(--game_card_comment_item_bg);
-    // background-color: red;
+    background-color: var(--game_card_bg);
     transition: $transition_effect_md;
 }
 
@@ -86,48 +109,69 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .pricesWrapper {
+        @include flexCenter;
+        gap: clamp(8px, 1rem, 12px);
+
+        .discountPrice,
+        .oldPrice {
+            font-family: 'Poppins';
+            transition: $transition_effect_md;
+            cursor: default;
+        }
+
+        .discountPrice {
+            font-size: $fs_normal_xl;
+            font-weight: 700;
+            color: $primary_light_color;
+        }
+
+        .oldPrice {
+            font-size: calc($fs_normal_xl * 0.76);
+            font-weight: 600;
+            text-decoration: line-through;
+            color: color-mix(in srgb, var(--text_color) 26%, transparent);
+        }
+    }
+
+    .gameLikeBtn {
+        cursor: pointer;
+        background-color: transparent;
+
+        svg path,
+        svg line,
+        svg polyline {
+            // fill: currentColor;
+            stroke: currentColor;
+        }
+
+        svg {
+            height: $fs_normal_md;
+            color: var(--text_color);
+            transition: $transition_effect_md;
+        }
+
+        &:hover {
+            svg {
+                color: $primary_color;
+            }
+        }
+    }
 }
 
-.pricesWrapper {
-    @include flexCenter;
-    gap: clamp(8px, 1rem, 12px);
+.gameCardExtraInfo {
+    position: absolute;
+    top: 94%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--game_card_bg);
+    padding-top: 0;
+    padding-bottom: $game_card_extra_info_padding_bottom;
 
-    .discountPrice,
-    .oldPrice {
-        font-family: 'Poppins';
-        transition: $transition_effect_md;
-    }
-
-    .discountPrice {
-        font-size: $fs_normal_xl;
-        font-weight: 700;
-        color: $primary_light_color;
-    }
-
-    .oldPrice {
-        font-size: calc($fs_normal_xl * 0.76);
-        font-weight: 600;
-        text-decoration: line-through;
-        color: color-mix(in srgb, var(--text_color) 26%, transparent);
-    }
-}
-
-.gameLikeBtn {
-    cursor: pointer;
-    background-color: transparent;
-
-    svg path,
-    svg line,
-    svg polyline {
-        // fill: currentColor;
-        stroke: currentColor;
-    }
-
-    svg {
-        height: $fs_normal_md;
-        color: var(--text_color);
-        transition: $transition_effect_md;
-    }
+    border-bottom-right-radius: $game_card_border_radius;
+    border-bottom-left-radius: $game_card_border_radius;
 }
 
 .gameDetailInfoWrapper {
@@ -140,7 +184,7 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 10px;
-        padding: 1.6em 0;
+        padding: 1em 0;
 
         border-bottom: 1px solid color-mix(in srgb, var(--in_focus_gray) 70%, transparent);
 
@@ -149,6 +193,7 @@
             font-size: $fs_normal_3sm;
             color: color-mix(in srgb, var(--text_color) 86%, transparent);
             transition: $transition_effect_md;
+            cursor: default;
         }
     }
 
@@ -166,6 +211,7 @@
 
 .detailInfoText {
     @include flexCenter;
+    cursor: default;
 
     svg {
         fill: currentColor;
@@ -194,8 +240,14 @@
 .addToCartBtn {
     font-size: $fs_normal_md;
     font-weight: 600;
-    color: $white_text;
+    color: $black_text;
     padding: 1rem;
     border-radius: 8px;
-    background-color: $primary_light_color;
+    background-color: $primary_lighter_color;
+    transition: $transition_effect_md;
+
+    &:hover {
+        color: $white_text;
+        background-color: $primary_color;
+    }
 }

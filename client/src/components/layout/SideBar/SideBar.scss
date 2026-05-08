@@ -2,7 +2,7 @@
     // position: sticky;
     overflow-y: auto;
     padding-left: $page_padding_left_right;
-    padding-top: $page_content_padding_content_top_bottom;
+    padding-top: $page_content_padding_content_top;
 
     @include flexColumn;
     align-items: stretch;
