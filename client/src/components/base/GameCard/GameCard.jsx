@@ -81,15 +81,16 @@ const gameCard = ({
     // const [isCardHover, setIsCardHover] = useState(true);
     const [isCardHover, setIsCardHover] = useState(false);
     const gameCardHoverTimer = useRef(null);
+    const [imgHoverIndex, setImgHoverIndex] = useState(0);
 
     const platformIcons = helper.svgPlatformsSelection(gameCardPlatforms);
     const releaseDate = format(gameCardReleaseDate, 'MMM d, yyyy');
 
-    console.log({ gameCardName });
+    // console.log({ gameCardName });
     // console.log({ platformIcons });
     // console.log({ gameCardPlatforms });
     // console.log({ releaseDate });
-    console.log({ gameCardMediaLibrary });
+    // console.log({ gameCardMediaLibrary });
 
     return (
         <div
@@ -106,12 +107,27 @@ const gameCard = ({
         >
             <div className={`gameCard ${isCardHover ? 'cardHovering' : ''}`}>
                 <div className="gameCardMedia">
-                    {/* {gameCardSingleMediaDisplay !== null && (
-                )} */}
                     <div className={`cardMediaWrapper ${gameCardSingleMediaDisplay !== null ? 'mediaDisplayed' : ''}`}>
                         {isCardHover ? (
                             <div className="cardMediaLibrary">
-                                <img src={gameCardSingleMediaDisplay} alt="game image" />
+                                {gameCardSingleMediaDisplay !== null &&
+                                    gameCardMediaLibrary !== null &&
+                                    gameCardMediaLibrary.length > 0 && (
+                                        <>
+                                            <img src={gameCardMediaLibrary[imgHoverIndex].image} alt="game image" />
+                                            <div className="imgNavigatorWrapper">
+                                                {gameCardMediaLibrary.map((item, index) => {
+                                                    return (
+                                                        <div
+                                                            className={`imgNavigator ${imgHoverIndex === index ? 'active' : ''}`}
+                                                            key={index}
+                                                            onMouseEnter={() => setImgHoverIndex(index)}
+                                                        ></div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </>
+                                    )}
                             </div>
                         ) : (
                             <>
@@ -163,7 +179,7 @@ const gameCard = ({
                     </div>
                 </div>
 
-                {isCardHover && (
+                {!isGameCardLoading && isCardHover && (
                     <div className="gameCardExtraInfo">
                         <ul className="gameDetailInfoWrapper">
                             <li className="detailInfoItem">
