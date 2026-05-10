@@ -1,5 +1,19 @@
 @use './variables' as *;
 
+@keyframes skeletonLoading {
+    0% {
+        background-position: -600px 0;
+        opacity: 100%;
+    }
+    50% {
+        opacity: 30%;
+    }
+    100% {
+        background-position: 600px 0;
+        opacity: 100%;
+    }
+}
+
 @keyframes headerInpExpand {
     0% {
         width: $header_inp_width_normal_laptop;
@@ -29,7 +43,7 @@
         transform: rotate(0deg) scale(1.06);
     }
     50% {
-        transform: rotate(180deg) scale(0.86);
+        transform: rotate(180deg) scale(0.76);
     }
     100% {
         transform: rotate(360deg) scale(1.06);
@@ -60,5 +74,26 @@
     }
     100% {
         transform: rotate(0deg);
+    }
+}
+
+@keyframes gameCardFavBtnPump {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    20% {
+        transform: translateY(-12px) scale(1.66) rotate(-45deg);
+    }
+    40% {
+        transform: translateY(-12px) scale(1.66) rotate(45deg);
+    }
+    60% {
+        transform: translateY(6px) scale(0.36) rotate(0deg);
+    }
+    80% {
+        transform: translateY(0) scale(1.26) rotate(0deg);
+    }
+    100% {
+        transform: translateY(0) scale(1);
     }
 }

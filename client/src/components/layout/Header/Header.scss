@@ -84,6 +84,7 @@
     svg {
         height: $fs_heading_3sm;
         color: var(--text_color);
+        transition: $transition_effect_md;
 
         .sunRays,
         .moonBody,
@@ -106,8 +107,10 @@
 
     &:hover {
         svg {
+            transform: scale(1.16);
+
             .sunRays {
-                animation: sunRaysSpinAndPulse 3s linear infinite;
+                animation: sunRaysSpinAndPulse 2.6s linear infinite;
             }
 
             .moonBody {

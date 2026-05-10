@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Masonry from 'react-masonry-css';
 
 import { useFetchGetData } from '../../../hooks/useFetchData';
@@ -20,6 +21,8 @@ import gamesDataTest from '../../../../data.json';
 
 const ViewGames = () => {
     const gamesData = gamesDataTest.results;
+    // const gamesData = null;
+
     // console.log({ gamesData });
 
     // const {
@@ -34,30 +37,59 @@ const ViewGames = () => {
         <PageLayout pageType="normalPage">
             <section className="filterControllerSection"></section>
             <section className="gamesDisplaySection">
-                <Masonry
-                    breakpointCols={breakpointColumnsObj}
-                    className="masonryGrid"
-                    columnClassName="masonryGridColumn"
-                >
-                    {gamesData.map((item, index) => {
-                        return (
-                            <GameCard
-                                key={item.id}
-                                // isGameCardLoading={''}
-                                gameCardId={item.id}
-                                gameCardSingleMediaDisplay={item.background_image}
-                                gameCardMediaLibrary={item.short_screenshots}
-                                gameCardPlatforms={item.platforms}
-                                gameCardName={item.name}
-                                gameCardReleaseDate={item.released}
-                                gameCardGenres={item.genres}
-                                gameCardRating={item.rating}
-                                gameCardRatingCount={item.ratings_count}
-                                gameCardStores={item.stores}
-                            ></GameCard>
-                        );
-                    })}
-                </Masonry>
+                {gamesData === null ? (
+                    <>
+                        <Masonry
+                            breakpointCols={breakpointColumnsObj}
+                            className="masonryGrid"
+                            columnClassName="masonryGridColumn"
+                        >
+                            {[...Array(6)].map((_, index) => {
+                                return (
+                                    <GameCard
+                                        key={index}
+                                        isGameCardLoading={true}
+                                        // gameCardId={item.id}
+                                        // gameCardSingleMediaDisplay={item.background_image}
+                                        // gameCardMediaLibrary={item.short_screenshots}
+                                        // gameCardPlatforms={item.platforms}
+                                        // gameCardName={item.name}
+                                        // gameCardReleaseDate={item.released}
+                                        // gameCardGenres={item.genres}
+                                        // gameCardRating={item.rating}
+                                        // gameCardRatingCount={item.ratings_count}
+                                        // gameCardStores={item.stores}
+                                    ></GameCard>
+                                );
+                            })}
+                        </Masonry>
+                    </>
+                ) : (
+                    <Masonry
+                        breakpointCols={breakpointColumnsObj}
+                        className="masonryGrid"
+                        columnClassName="masonryGridColumn"
+                    >
+                        {gamesData.map((item, index) => {
+                            return (
+                                <GameCard
+                                    key={item.id}
+                                    // isGameCardLoading={true}
+                                    gameCardId={item.id}
+                                    gameCardSingleMediaDisplay={item.background_image}
+                                    gameCardMediaLibrary={item.short_screenshots}
+                                    gameCardPlatforms={item.platforms}
+                                    gameCardName={item.name}
+                                    gameCardReleaseDate={item.released}
+                                    gameCardGenres={item.genres}
+                                    gameCardRating={item.rating}
+                                    gameCardRatingCount={item.ratings_count}
+                                    gameCardStores={item.stores}
+                                ></GameCard>
+                            );
+                        })}
+                    </Masonry>
+                )}
             </section>
             <section className="paginationControllerSection"></section>
         </PageLayout>

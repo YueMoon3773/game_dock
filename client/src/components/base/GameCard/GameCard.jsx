@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
 import { format } from 'date-fns';
@@ -22,7 +22,9 @@ import {
 } from '../../../assets/svgIcons';
 import helperFunctions from '../../../utils/helper';
 import ValidatedComponent from '../../../utils/validateComponentProps';
+import apiHelper from '../../../utils/apiHelper';
 
+import pageBaseStyles from '../../../styles/modules/basePageStyles.module.scss';
 import './GameCard.scss';
 
 const gameCardSchema = z
@@ -64,8 +66,9 @@ const gameCardSchema = z
     );
 
 const helper = helperFunctions();
+const api = apiHelper();
 
-const gameCard = ({
+const GameCard = ({
     isGameCardLoading,
     gameCardId,
     gameCardSingleMediaDisplay,
@@ -78,31 +81,65 @@ const gameCard = ({
     gameCardRatingCount,
     gameCardStores,
 }) => {
+    const GAME_FAV_BTN_DEFAULT_CLASS_NAME = 'gameFavBtn';
+
     // const [isCardHover, setIsCardHover] = useState(true);
     const [isCardHover, setIsCardHover] = useState(false);
     const gameCardHoverTimer = useRef(null);
     const [imgHoverIndex, setImgHoverIndex] = useState(0);
+    const [favBtnClassName, setFavBtnClassName] = useState(GAME_FAV_BTN_DEFAULT_CLASS_NAME);
+    const [isFavBtnClicked, setIsFavBtnClicked] = useState(false);
 
-    const platformIcons = helper.svgPlatformsSelection(gameCardPlatforms);
-    const releaseDate = format(gameCardReleaseDate, 'MMM d, yyyy');
+    const platformIcons = !gameCardPlatforms ? null : helper.svgPlatformsSelection(gameCardPlatforms);
+    const releaseDate = !gameCardReleaseDate ? null : format(gameCardReleaseDate, 'MMM d, yyyy');
+    const gameCurrentPrice = !gameCardReleaseDate ? null : '$ 60.00';
+    const gameOldPrice = !gameCardReleaseDate ? null : '$ 60.00';
 
     // console.log({ gameCardName });
     // console.log({ platformIcons });
     // console.log({ gameCardPlatforms });
     // console.log({ releaseDate });
     // console.log({ gameCardMediaLibrary });
+    console.log({ gameCardSingleMediaDisplay });
+
+    // set up effect for fav btn
+    useEffect(() => {
+        let effect = null;
+
+        if (isFavBtnClicked) {
+            setFavBtnClassName(`${GAME_FAV_BTN_DEFAULT_CLASS_NAME} active clickedAnimation`);
+            effect = setTimeout(() => {
+                setFavBtnClassName(`${GAME_FAV_BTN_DEFAULT_CLASS_NAME} active`);
+            }, 460);
+        }
+        if (!isFavBtnClicked) {
+            setFavBtnClassName(`${GAME_FAV_BTN_DEFAULT_CLASS_NAME}`);
+        }
+
+        return () => {
+            if (effect !== null) {
+                clearTimeout(effect);
+            }
+        };
+    }, [isFavBtnClicked]);
 
     return (
         <div
             className={`gameCardWrapper ${isCardHover ? 'cardHovering' : ''}`}
             onMouseEnter={() => {
-                gameCardHoverTimer.current = setTimeout(() => {
-                    setIsCardHover(true);
-                }, 360);
+                if (isGameCardLoading) return;
+                else {
+                    gameCardHoverTimer.current = setTimeout(() => {
+                        setIsCardHover(true);
+                    }, 360);
+                }
             }}
             onMouseLeave={() => {
-                clearTimeout(gameCardHoverTimer.current);
-                setIsCardHover(false);
+                if (isGameCardLoading) return;
+                else {
+                    clearTimeout(gameCardHoverTimer.current);
+                    setIsCardHover(false);
+                }
             }}
         >
             <div className={`gameCard ${isCardHover ? 'cardHovering' : ''}`}>
@@ -131,7 +168,10 @@ const gameCard = ({
                             </div>
                         ) : (
                             <>
-                                {gameCardSingleMediaDisplay !== null && (
+                                {isGameCardLoading && (
+                                    <div className={`${pageBaseStyles.skeletonLoading} imageSkeleton`}></div>
+                                )}
+                                {!isGameCardLoading && gameCardSingleMediaDisplay !== null && (
                                     <img src={gameCardSingleMediaDisplay} alt="game image" />
                                 )}
                             </>
@@ -141,7 +181,10 @@ const gameCard = ({
 
                 <div className="gameCardInfo">
                     <div className="platformsWrapper">
-                        {platformIcons !== null && (
+                        {isGameCardLoading && (
+                            <div className={`${pageBaseStyles.skeletonLoading} platformSkeleton`}></div>
+                        )}
+                        {!isGameCardLoading && platformIcons !== null && (
                             <>
                                 {platformIcons.map((icon, index) => {
                                     if (icon === 'pc') return <PcIcon key={index}></PcIcon>;
@@ -162,17 +205,26 @@ const gameCard = ({
                             </>
                         )}
                     </div>
-                    <Link className="gameName" to="/">
-                        {gameCardName}
-                    </Link>
+                    {isGameCardLoading && (gameCardName === null || gameCardName === undefined) && (
+                        <div className={`${pageBaseStyles.skeletonLoading} gameNameSkeleton`}></div>
+                    )}
+                    {!isGameCardLoading && (gameCardName !== null || gameCardName !== undefined) && (
+                        <Link className="gameName" to="/">
+                            {gameCardName}
+                        </Link>
+                    )}
                     <div className="gamePricesAndLike">
                         <div className="pricesWrapper">
-                            <span className="discountPrice">$60.00</span>
-                            <span className="oldPrice">$60.00</span>
+                            {gameCurrentPrice ? (
+                                <span className="discountPrice">{gameCurrentPrice}</span>
+                            ) : (
+                                <div className={`${pageBaseStyles.skeletonLoading} gamePriceSkeleton`}></div>
+                            )}
+                            {gameOldPrice && <span className="oldPrice">{gameOldPrice}</span>}
                         </div>
 
                         {isCardHover && (
-                            <button className="gameLikeBtn">
+                            <button className={favBtnClassName} onClick={() => setIsFavBtnClicked((prev) => !prev)}>
                                 <YourFavGamesIcon></YourFavGamesIcon>
                             </button>
                         )}
@@ -228,7 +280,16 @@ const gameCard = ({
                                             {gameCardStores.map((store, index) => {
                                                 return (
                                                     <p className="gameInfoLinkWrapper" key={store.store.id + index}>
-                                                        <Link to={`/`} key={store.store.id + index}>
+                                                        <Link
+                                                            to={
+                                                                api.STORE_DOMAINS[`${store.store.slug}`] === undefined
+                                                                    ? '/'
+                                                                    : api.STORE_DOMAINS[`${store.store.slug}`]
+                                                            }
+                                                            key={store.store.id + index}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
                                                             {store.store.name}
                                                         </Link>
                                                         {index === gameCardStores.length - 1 ? '' : ', '}
@@ -243,7 +304,9 @@ const gameCard = ({
                             </li>
                         </ul>
 
-                        <button className="addToCartBtn">Add to cart</button>
+                        <button className="addToCartBtn">
+                            <span>Add to cart</span>
+                        </button>
                     </div>
                 )}
             </div>
@@ -251,4 +314,4 @@ const gameCard = ({
     );
 };
 
-export default ValidatedComponent(gameCard, gameCardSchema);
+export default ValidatedComponent(GameCard, gameCardSchema);

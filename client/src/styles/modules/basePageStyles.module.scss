@@ -31,11 +31,6 @@
 
 .pageContent {
     flex: 1;
-    // @include flexColumn;
-    // align-items: stretch;
-    // justify-content: flex-start;
-    // gap: clamp(30px, 3.6em, 40px);
-    // margin-bottom: clamp(46px, 5.6em, 60px);
     transition: $transition_effect_md;
 }
 
@@ -43,4 +38,23 @@
     @include flexCenter;
     padding: clamp(8px, 1.4em, 16px);
     transition: all 360ms ease-in-out;
+}
+
+.skeletonLoading {
+    background: linear-gradient(90deg, $gray_color 25%, $dark_gray_color 50%, $light_gray_color 75%);
+    background-size: 600px 100%;
+    animation: skeletonLoading 2000ms infinite linear;
+    border-radius: 6px;
+    color: transparent !important;
+    cursor: default !important;
+
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+        color: transparent !important;
+        cursor: default !important;
+    }
 }

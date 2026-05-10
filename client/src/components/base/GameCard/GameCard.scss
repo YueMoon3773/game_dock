@@ -2,6 +2,7 @@ $game_card_img_width: 280px;
 $game_card_img_height: 160px;
 $game_card_info_padding: 16px 16px 24px;
 $game_card_extra_info_padding_bottom: 28px;
+$game_card_img_navigator_height: 6px;
 $game_card_border_radius: 12px;
 $game_card_hover_scale: scale(1.06) translateY(10px);
 
@@ -51,6 +52,12 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
         object-fit: cover;
         object-position: center;
     }
+
+    .imageSkeleton {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
 }
 
 .cardMediaLibrary {
@@ -60,21 +67,20 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
     position: relative;
 
     .imgNavigatorWrapper {
-        // width: 90%;
         padding: 0 10px;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         height: 15%;
-        background: linear-gradient(180deg, #ffffff00 0%, #000000bd 100%);
+        background: linear-gradient(180deg, #ffffff00 0%, #000000bd 90%);
 
         @include flexCenter;
         gap: 8px;
 
         .imgNavigator {
             flex: 1;
-            height: 8px;
+            height: $game_card_img_navigator_height;
             border-radius: 999px;
             background-color: rgba($color: $snow_white_color, $alpha: 0.36);
             transition: $transition_effect_md;
@@ -95,6 +101,10 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
 
     background-color: var(--game_card_bg);
     transition: $transition_effect_md;
+
+    &:has(.gameNameSkeleton) {
+        gap: clamp(10px, 1.2rem, 18px);
+    }
 }
 
 .platformsWrapper {
@@ -113,6 +123,17 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
         color: var(--text_color);
         transition: $transition_effect_md;
     }
+
+    .platformSkeleton {
+        width: 42%;
+        height: clamp(16px, 1.8rem, 22px);
+        border-radius: 4px;
+    }
+}
+
+.gameNameSkeleton {
+    width: 100%;
+    height: clamp(26px, 2.8rem, 32px);
 }
 
 .gameName {
@@ -158,11 +179,25 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
             text-decoration: line-through;
             color: color-mix(in srgb, var(--text_color) 26%, transparent);
         }
+
+        &:has(.gamePriceSkeleton) {
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .gamePriceSkeleton {
+            width: 25%;
+            height: clamp(20px, 2.4rem, 2.6px);
+            border-radius: 4px;
+        }
     }
 
-    .gameLikeBtn {
+    .gameFavBtn {
+        @include flexCenter;
+        padding: 0.6em;
         cursor: pointer;
         background-color: transparent;
+        transition: $transition_effect_md;
 
         svg path,
         svg line,
@@ -172,6 +207,7 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
         }
 
         svg {
+            fill: none;
             height: $fs_normal_md;
             color: var(--text_color);
             transition: $transition_effect_md;
@@ -179,6 +215,17 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
 
         &:hover {
             svg {
+                color: $primary_color;
+            }
+        }
+
+        &.clickedAnimation {
+            animation: gameCardFavBtnPump 660ms ease-in-out forwards;
+        }
+
+        &.active {
+            svg {
+                fill: currentColor;
                 color: $primary_color;
             }
         }
@@ -233,6 +280,11 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
     justify-content: flex-end;
     gap: 4px;
     flex-wrap: wrap;
+
+    transition: $transition_effect_md;
+    font-size: calc($fs_normal_ssm * 0.96);
+    font-size: $fs_normal_ssm;
+    color: var(--text_color);
 }
 
 .detailInfoText {
@@ -264,18 +316,23 @@ $game_card_hover_scale: scale(1.06) translateY(10px);
 }
 
 .addToCartBtn {
-    font-size: $fs_normal_md;
-    font-weight: 500;
-    // color: var(--hover_text_color);
-    color: $white_text;
     padding: 1rem;
     border-radius: 8px;
     background-color: $primary_light_color;
     transition: $transition_effect_md;
 
+    span {
+        font-size: $fs_normal_md;
+        font-weight: 500;
+        color: $white_text;
+        transition: $transition_effect_md;
+    }
+
     &:hover {
-        // color: var(--text_color);
         background-color: $primary_dark_color;
-        font-weight: 800;
+        span {
+            font-weight: 800;
+            transform: scale(1.06);
+        }
     }
 }
