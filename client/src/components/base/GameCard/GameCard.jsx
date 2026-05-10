@@ -92,15 +92,15 @@ const GameCard = ({
 
     const platformIcons = !gameCardPlatforms ? null : helper.svgPlatformsSelection(gameCardPlatforms);
     const releaseDate = !gameCardReleaseDate ? null : format(gameCardReleaseDate, 'MMM d, yyyy');
-    const gameCurrentPrice = !gameCardReleaseDate ? null : '$ 60.00';
-    const gameOldPrice = !gameCardReleaseDate ? null : '$ 60.00';
+    const gameCurrentPrice = !gameCardReleaseDate ? null : '$60.00';
+    const gameOldPrice = !gameCardReleaseDate ? null : '$60.00';
 
     // console.log({ gameCardName });
     // console.log({ platformIcons });
     // console.log({ gameCardPlatforms });
     // console.log({ releaseDate });
     // console.log({ gameCardMediaLibrary });
-    console.log({ gameCardSingleMediaDisplay });
+    // console.log({ gameCardSingleMediaDisplay });
 
     // set up effect for fav btn
     useEffect(() => {

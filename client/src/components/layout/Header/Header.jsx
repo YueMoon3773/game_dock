@@ -74,7 +74,7 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
 
     return (
         <header
-            className={`${basePageStyles.pageHeader} header ${pageType === 'normalPage' ? 'normalPageHeader' : ''} ${isHeaderHidden ? 'hidden' : ''}`}
+            className={`${basePageStyles.pageHeader} header ${pageType === 'normalPage' || pageType === 'viewGamesPage' ? 'normalPageHeader' : ''} ${isHeaderHidden ? 'hidden' : ''}`}
         >
             <Link
                 to="/"

@@ -18,6 +18,9 @@ const PageContent = ({ pageType, children }) => {
         case 'normalPage':
             pageContentClassName = `${basePageStyles.pageBgHasColor} pageContentWrapper normalPage`;
             break;
+        case 'viewGamesPage':
+            pageContentClassName = `${basePageStyles.pageBgHasColor} pageContentWrapper viewGamesPage`;
+            break;
         case 'introPage':
             pageContentClassName = `${basePageStyles.pageContent} pageContentWrapper introPage`;
             break;
@@ -30,13 +33,13 @@ const PageContent = ({ pageType, children }) => {
 
     return (
         <div className={pageContentClassName}>
-            {pageType === 'normalPage' && (
+            {pageType === 'viewGamesPage' && (
                 <>
                     <SideBar></SideBar>
                     <div className="contentWrapper">{children}</div>
                 </>
             )}
-            {(pageType === 'introPage' || pageType === 'errorPage') && <>{children}</>}
+            {(pageType === 'introPage' || pageType === 'errorPage' || pageType === 'normalPage') && <>{children}</>}
         </div>
     );
 };

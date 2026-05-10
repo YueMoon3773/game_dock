@@ -15,7 +15,7 @@
         }
     }
 
-    &.normalPage {
+    &.viewGamesPage {
         @include displayGrid;
         grid-template-columns: 2.5fr 9.5fr;
         padding-bottom: $page_content_padding_content_top;

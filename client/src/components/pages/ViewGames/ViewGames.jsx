@@ -34,7 +34,7 @@ const ViewGames = () => {
     // } = useFetchGetData(`${baseGameApiUrl}/games?key=${gameApiUrlKey}`);
 
     return (
-        <PageLayout pageType="normalPage">
+        <PageLayout pageType="viewGamesPage">
             <section className="filterControllerSection"></section>
             <section className="gamesDisplaySection">
                 {gamesData === null ? (
@@ -45,22 +45,7 @@ const ViewGames = () => {
                             columnClassName="masonryGridColumn"
                         >
                             {[...Array(6)].map((_, index) => {
-                                return (
-                                    <GameCard
-                                        key={index}
-                                        isGameCardLoading={true}
-                                        // gameCardId={item.id}
-                                        // gameCardSingleMediaDisplay={item.background_image}
-                                        // gameCardMediaLibrary={item.short_screenshots}
-                                        // gameCardPlatforms={item.platforms}
-                                        // gameCardName={item.name}
-                                        // gameCardReleaseDate={item.released}
-                                        // gameCardGenres={item.genres}
-                                        // gameCardRating={item.rating}
-                                        // gameCardRatingCount={item.ratings_count}
-                                        // gameCardStores={item.stores}
-                                    ></GameCard>
-                                );
+                                return <GameCard key={index} isGameCardLoading={true}></GameCard>;
                             })}
                         </Masonry>
                     </>
@@ -74,7 +59,7 @@ const ViewGames = () => {
                             return (
                                 <GameCard
                                     key={item.id}
-                                    // isGameCardLoading={true}
+                                    isGameCardLoading={false}
                                     gameCardId={item.id}
                                     gameCardSingleMediaDisplay={item.background_image}
                                     gameCardMediaLibrary={item.short_screenshots}
