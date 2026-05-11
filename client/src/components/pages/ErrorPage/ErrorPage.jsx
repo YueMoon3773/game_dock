@@ -22,7 +22,7 @@ const ErrorPage = () => {
             bgPosterImg={bgPosterImg}
             isBgVideoBright={isBgVideoBright}
         >
-            <div className="introCard inErrorPage">
+            <div className="introCard errorPage">
                 <div className="introCardTop">
                     <h1>Something isn't working. Please try again later.</h1>
                 </div>

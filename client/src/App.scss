@@ -7,7 +7,7 @@
     backdrop-filter: $intro_element_blur_bg_effect;
     box-shadow: 2px 6px 16px rgba($color: $black_text, $alpha: 0.36);
 
-    &.inErrorPage {
+    &.errorPage {
         h1 {
             font-size: $fs_heading_sm;
             color: $white_text;

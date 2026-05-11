@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Masonry from 'react-masonry-css';
 
 import { useFetchGetData } from '../../../hooks/useFetchData';
@@ -34,50 +35,57 @@ const ViewGames = () => {
     // } = useFetchGetData(`${baseGameApiUrl}/games?key=${gameApiUrlKey}`);
 
     return (
-        <PageLayout pageType="viewGamesPage">
-            <section className="filterControllerSection"></section>
-            <section className="gamesDisplaySection">
-                {gamesData === null ? (
-                    <>
+        <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 60 }}
+            transition={{ duration: 0.36, ease: 'easeInOut' }}
+        >
+            <PageLayout pageType="viewGamesPage">
+                <section className="filterControllerSection"></section>
+                <section className="gamesDisplaySection">
+                    {gamesData === null ? (
+                        <>
+                            <Masonry
+                                breakpointCols={breakpointColumnsObj}
+                                className="masonryGrid"
+                                columnClassName="masonryGridColumn"
+                            >
+                                {[...Array(6)].map((_, index) => {
+                                    return <GameCard key={index} isGameCardLoading={true}></GameCard>;
+                                })}
+                            </Masonry>
+                        </>
+                    ) : (
                         <Masonry
                             breakpointCols={breakpointColumnsObj}
                             className="masonryGrid"
                             columnClassName="masonryGridColumn"
                         >
-                            {[...Array(6)].map((_, index) => {
-                                return <GameCard key={index} isGameCardLoading={true}></GameCard>;
+                            {gamesData.map((item, index) => {
+                                return (
+                                    <GameCard
+                                        key={item.id}
+                                        isGameCardLoading={false}
+                                        gameCardId={item.id}
+                                        gameCardSingleMediaDisplay={item.background_image}
+                                        gameCardMediaLibrary={item.short_screenshots}
+                                        gameCardPlatforms={item.platforms}
+                                        gameCardName={item.name}
+                                        gameCardReleaseDate={item.released}
+                                        gameCardGenres={item.genres}
+                                        gameCardRating={item.rating}
+                                        gameCardRatingCount={item.ratings_count}
+                                        gameCardStores={item.stores}
+                                    ></GameCard>
+                                );
                             })}
                         </Masonry>
-                    </>
-                ) : (
-                    <Masonry
-                        breakpointCols={breakpointColumnsObj}
-                        className="masonryGrid"
-                        columnClassName="masonryGridColumn"
-                    >
-                        {gamesData.map((item, index) => {
-                            return (
-                                <GameCard
-                                    key={item.id}
-                                    isGameCardLoading={false}
-                                    gameCardId={item.id}
-                                    gameCardSingleMediaDisplay={item.background_image}
-                                    gameCardMediaLibrary={item.short_screenshots}
-                                    gameCardPlatforms={item.platforms}
-                                    gameCardName={item.name}
-                                    gameCardReleaseDate={item.released}
-                                    gameCardGenres={item.genres}
-                                    gameCardRating={item.rating}
-                                    gameCardRatingCount={item.ratings_count}
-                                    gameCardStores={item.stores}
-                                ></GameCard>
-                            );
-                        })}
-                    </Masonry>
-                )}
-            </section>
-            <section className="paginationControllerSection"></section>
-        </PageLayout>
+                    )}
+                </section>
+                <section className="paginationControllerSection"></section>
+            </PageLayout>
+        </motion.div>
     );
 };
 

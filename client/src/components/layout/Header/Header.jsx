@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, use } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
@@ -22,12 +22,11 @@ const headerSchema = z.object({
 });
 
 const Header = ({ pageType, isPageInBrightBg = false }) => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme, changeToDarkTheme } = useTheme();
     const [isHeaderHidden, setIsHeaderHidden] = useState(false);
     const lastScrollY = useRef(0);
 
     const [searchInpVal, setSearchInpVal] = useState('');
-    const [isThemeBtnHover, setIsThemeBtnHover] = useState(false);
 
     // Set up hide/unhide header
     useEffect(() => {
@@ -68,6 +67,13 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
         return () => window.removeEventListener('scroll', scrollObserveHandle);
     }, []);
 
+    // Change to dark theme in intro/error page
+    useEffect(() => {
+        if (pageType === 'introPage' || pageType === 'errorPage') {
+            changeToDarkTheme();
+        }
+    }, [pageType]);
+
     const searchInpOnChangeHandle = (e) => {
         setSearchInpVal(e.target.value);
     };
@@ -94,15 +100,12 @@ const Header = ({ pageType, isPageInBrightBg = false }) => {
             ></SearchInp>
 
             <div className="headerControllerWrapper">
-                <button
-                    className="themeBtn"
-                    onClick={toggleTheme}
-                    onMouseEnter={() => setIsThemeBtnHover(true)}
-                    onMouseLeave={() => setIsThemeBtnHover(false)}
-                >
-                    {theme === 'light' && <MoonIcon moonIconHover={isThemeBtnHover}></MoonIcon>}
-                    {theme === 'dark' && <SunIcon sunIconHover={isThemeBtnHover}></SunIcon>}
-                </button>
+                {pageType !== 'introPage' && pageType !== 'errorPage' && (
+                    <button className="themeBtn" onClick={toggleTheme}>
+                        {theme === 'light' && <MoonIcon></MoonIcon>}
+                        {theme === 'dark' && <SunIcon></SunIcon>}
+                    </button>
+                )}
 
                 <button className={`cartBtn ${pageType === 'introPage' ? 'introPage' : ''}`}>
                     <CartIcon></CartIcon>

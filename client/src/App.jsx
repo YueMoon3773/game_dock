@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import { useVideoBgChange } from './hooks/useVideoBgChange';
 
@@ -22,7 +23,15 @@ const App = () => {
             bgPosterImg={bgPosterImg}
             isBgVideoBright={isBgVideoBright}
         >
-            <div className="introCard introCardLeft">
+            <motion.div
+                className="introCard introCardLeft"
+                initial={{ opacity: 0, x: -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.36, ease: 'easeInOut' }}
+            >
+                {/* <div className="introCard introCardLeft"></div> */}
+
                 <div className="introCardTop">
                     <h1>Gamio</h1>
                     <p>
@@ -52,9 +61,15 @@ const App = () => {
                         <span>RAWG API</span>
                     </Link>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="introCard introCardRight">
+            <motion.div
+                className="introCard introCardRight"
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 60 }}
+                transition={{ duration: 0.36, ease: 'easeInOut' }}
+            >
                 <h4>Quick navigation</h4>
                 <Link to="/games" className="introPageBtn introQuickNavigationBtn" onClick={changeBgVideo}>
                     <Last30DaysIcon></Last30DaysIcon>
@@ -75,7 +90,7 @@ const App = () => {
                     <AllTimeTopIcon></AllTimeTopIcon>
                     <span>All time top</span>
                 </Link>
-            </div>
+            </motion.div>
         </PageLayout>
     );
 };

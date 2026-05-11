@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { z } from 'zod';
 
 import { useTheme } from '../../../hooks/useTheme';
@@ -34,7 +35,6 @@ const pageLayoutSchema = z
     );
 
 const PageLayout = ({ pageType, bgVideo, bgPosterImg, isBgVideoBright, children }) => {
-        
     const { theme } = useTheme();
     const [isBgVideoReady, setIsBgVideoReady] = useState(false);
 
@@ -74,7 +74,18 @@ const PageLayout = ({ pageType, bgVideo, bgPosterImg, isBgVideoBright, children 
                 </div>
             )}
 
-            <Header pageType={pageType} isPageInBrightBg={isPageInBrightBg}></Header>
+            {pageType === 'introPage' || pageType === 'errorPage' ? (
+                <motion.div
+                    initial={{ opacity: 0, y: -60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -60 }}
+                    transition={{ duration: 0.36, ease: 'easeInOut' }}
+                >
+                    <Header pageType={pageType} isPageInBrightBg={isPageInBrightBg}></Header>
+                </motion.div>
+            ) : (
+                <Header pageType={pageType} isPageInBrightBg={isPageInBrightBg}></Header>
+            )}
             <PageContent pageType={pageType}>{children}</PageContent>
         </div>
     );
