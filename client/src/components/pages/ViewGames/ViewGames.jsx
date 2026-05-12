@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Masonry from 'react-masonry-css';
 
@@ -9,19 +9,17 @@ import GameCard from '../../base/GameCard/GameCard';
 
 import './ViewGames.scss';
 
-const baseGameApiUrl = import.meta.env.VITE_API_GAMES_URL;
-const gameApiUrlKey = import.meta.env.VITE_API_GAMES_URL_KEY;
-
 const breakpointColumnsObj = {
     default: 3,
     1200: 2,
     740: 1,
 };
 
-import gamesDataTest from '../../../../data.json';
+import gamesData from '../../../../data.json';
 
 const ViewGames = () => {
-    const gamesData = gamesDataTest.results;
+    const location = useLocation();
+
     // const gamesData = null;
 
     // console.log({ gamesData });
@@ -38,8 +36,8 @@ const ViewGames = () => {
         <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 60 }}
-            transition={{ duration: 0.36, ease: 'easeInOut' }}
+            exit={{ opacity: 0, x: -60 }}
+            transition={{ duration: 0.66, ease: 'easeInOut' }}
         >
             <PageLayout pageType="viewGamesPage">
                 <section className="filterControllerSection"></section>
@@ -62,10 +60,11 @@ const ViewGames = () => {
                             className="masonryGrid"
                             columnClassName="masonryGridColumn"
                         >
-                            {gamesData.map((item, index) => {
+                            {gamesData.results.map((item, index) => {
                                 return (
                                     <GameCard
                                         key={item.id}
+                                        currentUrlLocationOfGameCard={location.pathname}
                                         isGameCardLoading={false}
                                         gameCardId={item.id}
                                         gameCardSingleMediaDisplay={item.background_image}

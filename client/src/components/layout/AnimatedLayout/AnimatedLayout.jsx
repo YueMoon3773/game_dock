@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import { useLocation, Outlet } from 'react-router';
+import { useLocation, Outlet } from 'react-router-dom';
 
 export default function AnimatedLayout() {
     const location = useLocation();

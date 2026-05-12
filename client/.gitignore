@@ -28,3 +28,5 @@ dist-ssr
 
 # Test data
 .data.json
+.details.json
+.details_img.json

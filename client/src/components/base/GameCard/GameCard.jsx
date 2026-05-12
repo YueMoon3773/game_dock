@@ -20,6 +20,7 @@ import {
     YourFavGamesIcon,
     StarIcon,
 } from '../../../assets/svgIcons';
+import NoImgAvailable from '../../../assets/img/prj/no_image_found.png';
 import helperFunctions from '../../../utils/helper';
 import ValidatedComponent from '../../../utils/validateComponentProps';
 import apiHelper from '../../../utils/apiHelper';
@@ -29,6 +30,7 @@ import './GameCard.scss';
 
 const gameCardSchema = z
     .object({
+        currentUrlLocationOfGameCard: z.string().optional(),
         isGameCardLoading: z.boolean().optional(),
         gameCardId: z.number().nullable().optional(),
         gameCardSingleMediaDisplay: z.string().nullable().optional(),
@@ -46,6 +48,7 @@ const gameCardSchema = z
             if (
                 props.isGameCardLoading === false &&
                 (props.gameCardId === undefined ||
+                    props.currentUrlLocationOfGameCard === undefined ||
                     props.gameCardSingleMediaDisplay === undefined ||
                     props.gameCardMediaLibrary === undefined ||
                     props.gameCardPlatforms === undefined ||
@@ -61,7 +64,7 @@ const gameCardSchema = z
         },
         {
             message:
-                'gameCardId,gameCardSingleMediaDisplay,gameCardMediaLibrary,gameCardPlatforms, gameCardPlatformsParents, gameCardName,gameCardReleaseDate,gameCardGenres,gameCardRating, gameCardRatingCount, gameCardStores must be provided in case isGameCardLoading === false',
+                'currentUrlLocationOfGameCard, gameCardId, gameCardSingleMediaDisplay, gameCardMediaLibrary, gameCardPlatforms, gameCardPlatformsParents, gameCardName, gameCardReleaseDate, gameCardGenres,gameCardRating, gameCardRatingCount, gameCardStores must be provided in case isGameCardLoading === false',
         },
     );
 
@@ -69,6 +72,7 @@ const helper = helperFunctions();
 const api = apiHelper();
 
 const GameCard = ({
+    currentUrlLocationOfGameCard,
     isGameCardLoading,
     gameCardId,
     gameCardSingleMediaDisplay,
@@ -151,7 +155,13 @@ const GameCard = ({
                                     gameCardMediaLibrary !== null &&
                                     gameCardMediaLibrary.length > 0 && (
                                         <>
-                                            <img src={gameCardMediaLibrary[imgHoverIndex].image} alt="game image" />
+                                            <img
+                                                src={gameCardMediaLibrary[imgHoverIndex].image}
+                                                alt="game image"
+                                                onError={(e) => {
+                                                    e.target.src = NoImgAvailable;
+                                                }}
+                                            />
                                             <div className="imgNavigatorWrapper">
                                                 {gameCardMediaLibrary.map((item, index) => {
                                                     return (
@@ -172,7 +182,13 @@ const GameCard = ({
                                     <div className={`${pageBaseStyles.skeletonLoading} imageSkeleton`}></div>
                                 )}
                                 {!isGameCardLoading && gameCardSingleMediaDisplay !== null && (
-                                    <img src={gameCardSingleMediaDisplay} alt="game image" />
+                                    <img
+                                        src={gameCardSingleMediaDisplay}
+                                        alt="game image"
+                                        onError={(e) => {
+                                            e.target.src = NoImgAvailable;
+                                        }}
+                                    />
                                 )}
                             </>
                         )}
@@ -209,7 +225,11 @@ const GameCard = ({
                         <div className={`${pageBaseStyles.skeletonLoading} gameNameSkeleton`}></div>
                     )}
                     {!isGameCardLoading && (gameCardName !== null || gameCardName !== undefined) && (
-                        <Link className="gameName" to="/">
+                        <Link
+                            className="gameName"
+                            to="/game-detail"
+                            state={{ gameMediaLibrary: gameCardMediaLibrary, fromUrl: currentUrlLocationOfGameCard }}
+                        >
                             {gameCardName}
                         </Link>
                     )}

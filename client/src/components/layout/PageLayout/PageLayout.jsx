@@ -79,7 +79,7 @@ const PageLayout = ({ pageType, bgVideo, bgPosterImg, isBgVideoBright, children 
                     initial={{ opacity: 0, y: -60 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -60 }}
-                    transition={{ duration: 0.36, ease: 'easeInOut' }}
+                    transition={{ duration: 0.66, ease: 'easeInOut' }}
                 >
                     <Header pageType={pageType} isPageInBrightBg={isPageInBrightBg}></Header>
                 </motion.div>
